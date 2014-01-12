@@ -4,6 +4,7 @@ package trimet
 //
 // TriMet API docs: http://developer.trimet.org/ws_docs/arrivals_ws.shtml
 type ArrivalsService struct {
+	client *Client
 }
 
 type ArrivalsRequest struct {
@@ -33,4 +34,17 @@ type ArrivalsResponse struct {
 	Response
 	Locations []Location `json:"location"`
 	Arrivals  []Arrival  `json:"arrival"`
+}
+
+// Get latest arrival information.
+func (s *ArrivalsService) Get(r *ArrivalsRequest) (*ArrivalsResponse, error) {
+	url, err := addParameters("arrivals", r)
+	if err != nil {
+		return nil, err
+	}
+
+	response := new(ArrivalsResponse)
+	err = s.client.Get(url, response)
+
+	return response, err
 }

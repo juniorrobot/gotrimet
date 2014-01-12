@@ -5,6 +5,7 @@ package trimet
 //
 // TriMet API docs: http://developer.trimet.org/ws_docs/stop_location_ws.shtml
 type StopsService struct {
+	client *Client
 }
 
 type StopsRequest struct {
@@ -43,4 +44,17 @@ type StopsRequest struct {
 type StopsResponse struct {
 	Response
 	Locations []Location `json:"location"`
+}
+
+// Get latest stop information.
+func (s *StopsService) Get(r *StopsRequest) (*StopsResponse, error) {
+	url, err := addParameters("stops", r)
+	if err != nil {
+		return nil, err
+	}
+
+	response := new(StopsResponse)
+	err = s.client.Get(url, response)
+
+	return response, err
 }

@@ -4,6 +4,7 @@ package trimet
 //
 // TriMet API docs: http://developer.trimet.org/ws_docs/detours_ws.shtml
 type DetoursService struct {
+	client *Client
 }
 
 type DetoursRequest struct {
@@ -17,4 +18,17 @@ type DetoursRequest struct {
 type DetoursResponse struct {
 	Response
 	Detours []Detour `json:"detour"`
+}
+
+// Get latest detour information.
+func (s *DetoursService) Get(r *DetoursRequest) (*DetoursResponse, error) {
+	url, err := addParameters("detours", r)
+	if err != nil {
+		return nil, err
+	}
+
+	response := new(DetoursResponse)
+	err = s.client.Get(url, response)
+
+	return response, err
 }

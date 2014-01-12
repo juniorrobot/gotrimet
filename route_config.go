@@ -6,6 +6,7 @@ package trimet
 //
 // TriMet API docs: http://developer.trimet.org/ws_docs/routeConfig_ws.shtml
 type RoutesService struct {
+	client *Client
 }
 
 type RouteConfigRequest struct {
@@ -44,4 +45,17 @@ type RouteConfigRequest struct {
 type RouteConfigResponse struct {
 	Response
 	Routes []Route `json:"route"`
+}
+
+// Get latest route information.
+func (s *RoutesService) Get(r *RouteConfigRequest) (*RouteConfigResponse, error) {
+	url, err := addParameters("routeConfig", r)
+	if err != nil {
+		return nil, err
+	}
+
+	response := new(RouteConfigResponse)
+	err = s.client.Get(url, response)
+
+	return response, err
 }
