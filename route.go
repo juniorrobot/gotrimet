@@ -9,7 +9,7 @@ type Route struct {
 
 	// The type of the route, either 'B' for bus, or 'R' for fixed guideway
 	// (either rail or aerial tram).
-	Type rune `json:"type"`
+	Type string `json:"type"`
 
 	// Indicates if this route has a detour in effect.
 	Detour bool `json:"detour"`
