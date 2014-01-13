@@ -3,7 +3,6 @@ package trimet
 import (
 	"fmt"
 	"net/http"
-	"time"
 )
 
 // Response is a TriMet API response.
@@ -11,7 +10,7 @@ import (
 // This wraps the standard http.Response returned from TriMet and provides
 // convenient access to things like query times.
 type Response struct {
-	QueryTime *time.Time `json:"queryTime"`
+	QueryTime *Time `json:"queryTime"`
 }
 
 // An ErrorResponse reports one or more errors caused by an API request.

@@ -1,9 +1,5 @@
 package trimet
 
-import (
-	"time"
-)
-
 // Arrival contains arrival details for a Location.
 type Arrival struct {
 	// The Location id of the arrival.
@@ -41,11 +37,11 @@ type Arrival struct {
 
 	// The estimated time for this arrival. If this value is not present the
 	// arrival could not be estimated and schedule is shown instead.
-	Estimated *time.Time `json:"estimated"`
+	Estimated *Time `json:"estimated"`
 
 	// The scheduled stop time (or interpolated scheduled stop time when the
 	// stop is not a time point) of the arrival.
-	Scheduled *time.Time `json:"scheduled"`
+	Scheduled *Time `json:"scheduled"`
 
 	// The full text of the overhead sign of the vehicle when it arrives at the
 	// stop.

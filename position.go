@@ -1,12 +1,8 @@
 package trimet
 
-import (
-	"time"
-)
-
 type Position struct {
 	// The time this position was reported.
-	At *time.Time `json:"at"`
+	At *Time `json:"at"`
 
 	// Number of feet the vehicle is away from the stop at the time the
 	// position was reported.
@@ -28,9 +24,9 @@ type Position struct {
 	// requested arrival.
 	Layover struct {
 		// The time the layover begins.
-		Start *time.Time `json:"start"`
+		Start *Time `json:"start"`
 
 		// The time the layover ends.
-		End *time.Time `json:"end"`
+		End *Time `json:"end"`
 	} `json:"layover"`
 }
