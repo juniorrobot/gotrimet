@@ -15,12 +15,7 @@ type StopsRequest struct {
 	//
 	// Comma delimited list of longitude and latitude values.
 	// Arguments are lonmin, latmin, lonmax, latmax in decimal degrees.
-	BoundingBox struct {
-		LonMin float64 `url:"lonmin"`
-		LatMin float64 `url:"latmin"`
-		LonMax float64 `url:"lonmax"`
-		LatMax float64 `url:"latmax"`
-	} `url:"bbox,omitempty"`
+	BoundingBox []float64 `url:"bbox,omitempty,comma"`
 
 	// Defines center of search radius in decimal degrees.
 	// Longitude, Latitude pair.
