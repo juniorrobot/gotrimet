@@ -1,0 +1,45 @@
+{"resultSet":{
+	"location":[
+		{
+			"desc":"NW Northrup & 14th",
+			"locid":10775,
+			"dir":"Westbound",
+			"route":[
+				{
+					"desc":"Portland Streetcar - NS Line",
+					"dir":[
+						{
+							"desc":"To NW 23rd and Marshall",
+							"dir":0
+						}
+					],
+					"route":193,
+					"type":"R"
+				}
+			],
+			"lng":-122.685356502158,
+			"lat":45.5315030383606
+		},
+		{
+			"desc":"NW Lovejoy & 13th",
+			"locid":10752,
+			"dir":"Eastbound",
+			"route":[
+				{
+					"desc":"Portland Streetcar - NS Line",
+					"dir":[
+						{
+							"desc":"To South Waterfront",
+							"dir":1
+						}
+					],
+					"route":193,
+					"type":"R"
+				}
+			],
+			"lng":-122.684611,
+			"lat":45.529997
+		}
+	],
+	"queryTime":"2014-01-12T15:32:13.438-0800"
+}}
