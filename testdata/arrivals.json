@@ -1,0 +1,55 @@
+{"resultSet":{
+	"location":[
+		{
+			"desc":"NW 23rd & Marshall",
+			"locid":8989,
+			"dir":"Southbound",
+			"lng":-122.698688376761,
+			"lat":45.5306116478909
+		}
+	],
+	"arrival":[
+		{
+			"detour":true,
+			"status":"estimated",
+			"locid":8989,
+			"block":1537,
+			"scheduled":"2014-01-12T17:46:00.000-0800",
+			"shortSign":"15 Gateway TC",
+			"dir":1,
+			"estimated":"2014-01-12T17:46:00.000-0800",
+			"route":15,
+			"departed":false,
+			"blockPosition":{
+				"at":"2014-01-12T17:12:05.000-0800",
+				"feet":15005,
+				"lng":-122.6973469,
+				"trip":[
+					{
+						"progress":50383,
+						"desc":"Montgomery Park",
+						"pattern":21,
+						"dir":0,
+						"route":15,
+						"tripNum":"4285706",
+						"destDist":60942
+					},
+					{
+						"progress":0,
+						"desc":"Gateway Layover",
+						"pattern":26,
+						"dir":1,
+						"route":15,
+						"tripNum":"4285964",
+						"destDist":4447
+					}
+				],
+				"lat":45.5233678,
+				"heading":273
+			},
+			"fullSign":"15  Belmont/NW 23rd to Gateway TC",
+			"piece":"1"
+		}
+	],
+	"queryTime":"2014-01-12T17:12:09.351-0800"
+}}
