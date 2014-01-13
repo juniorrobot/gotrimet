@@ -36,15 +36,17 @@ type ArrivalsResponse struct {
 	Arrivals  []Arrival  `json:"arrival"`
 }
 
+type arrivalsResponseResults struct {
+	Results *ArrivalsResponse `json:"resultSet,omitempty"`
+}
+
 // Get latest arrival information.
 func (s *ArrivalsService) Get(r *ArrivalsRequest) (*ArrivalsResponse, error) {
-	url, err := addParameters("arrivals", r)
-	if err != nil {
+	response := new(arrivalsResponseResults)
+	err := s.client.Get("arrivals", r, response)
+	if nil != err {
 		return nil, err
 	}
 
-	response := new(ArrivalsResponse)
-	err = s.client.Get(url, response)
-
-	return response, err
+	return response.Results, nil
 }

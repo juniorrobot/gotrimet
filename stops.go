@@ -46,15 +46,17 @@ type StopsResponse struct {
 	Locations []Location `json:"location"`
 }
 
+type stopsResponseResults struct {
+	Results *StopsResponse `json:"resultSet,omitempty"`
+}
+
 // Get latest stop information.
 func (s *StopsService) Get(r *StopsRequest) (*StopsResponse, error) {
-	url, err := addParameters("stops", r)
-	if err != nil {
+	response := new(stopsResponseResults)
+	err := s.client.Get("stops", r, response)
+	if nil != err {
 		return nil, err
 	}
 
-	response := new(StopsResponse)
-	err = s.client.Get(url, response)
-
-	return response, err
+	return response.Results, nil
 }

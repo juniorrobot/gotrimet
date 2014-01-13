@@ -47,15 +47,17 @@ type RouteConfigResponse struct {
 	Routes []Route `json:"route"`
 }
 
+type routeConfigResponseResults struct {
+	Results *RouteConfigResponse `json:"resultSet,omitempty"`
+}
+
 // Get latest route information.
 func (s *RoutesService) Get(r *RouteConfigRequest) (*RouteConfigResponse, error) {
-	url, err := addParameters("routeConfig", r)
-	if err != nil {
+	response := new(routeConfigResponseResults)
+	err := s.client.Get("routeConfig", r, response)
+	if nil != err {
 		return nil, err
 	}
 
-	response := new(RouteConfigResponse)
-	err = s.client.Get(url, response)
-
-	return response, err
+	return response.Results, nil
 }

@@ -24,6 +24,8 @@ var (
 	server *httptest.Server
 )
 
+const testAppID = `abc123`
+
 // setup sets up a test HTTP server along with a trimet.Client that is
 // configured to talk to that test server.  Tests should register handlers on
 // mux which provide mock responses for the API method being tested.
@@ -31,7 +33,7 @@ func setup() {
 	mux = http.NewServeMux()
 	server = httptest.NewServer(mux)
 
-	client = NewClient(nil)
+	client = NewClient(testAppID, nil)
 	url, _ := url.Parse(server.URL)
 	client.BaseURL = url
 }
@@ -114,8 +116,11 @@ func testJSONMarshal(t *testing.T, v interface{}, expect string) {
 }
 
 func TestNewClient(t *testing.T) {
-	c := NewClient(nil)
+	c := NewClient(testAppID, nil)
 
+	if testAppID != c.appID {
+		t.Errorf("Expected NewClient AppID = %v, found %v", testAppID, c.appID)
+	}
 	if c.BaseURL.String() != defaultBaseURL {
 		t.Errorf("Expected NewClient BaseURL = %v, found %v", defaultBaseURL, c.BaseURL.String())
 	}
@@ -125,10 +130,13 @@ func TestNewClient(t *testing.T) {
 }
 
 func TestNewRequest(t *testing.T) {
-	c := NewClient(nil)
+	c := NewClient(testAppID, nil)
 
-	inURL, outURL := "foo", defaultBaseURL+"foo"
-	req, _ := c.NewRequest("GET", inURL, nil)
+	inURL, outURL := "foo", defaultBaseURL+"foo?appID="+testAppID+"&json=true"
+	req, err := c.NewRequest("GET", inURL, nil)
+	if nil != err {
+		t.Fatalf("Unexpected error creating request: %v", err)
+	}
 
 	// test that relative URL was expanded
 	if req.URL.String() != outURL {
@@ -142,24 +150,8 @@ func TestNewRequest(t *testing.T) {
 	}
 }
 
-func TestNewRequest_invalidJSON(t *testing.T) {
-	c := NewClient(nil)
-
-	type T struct {
-		A map[int]interface{}
-	}
-	_, err := c.NewRequest("GET", "/", &T{})
-
-	if err == nil {
-		t.Error("Expected error to be returned.")
-	}
-	if err, ok := err.(*json.UnsupportedTypeError); !ok {
-		t.Errorf("Expected a JSON error; got %#v.", err)
-	}
-}
-
 func TestNewRequest_badURL(t *testing.T) {
-	c := NewClient(nil)
+	c := NewClient(testAppID, nil)
 	_, err := c.NewRequest("GET", ":", nil)
 	testURLParseError(t, err)
 }

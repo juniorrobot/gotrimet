@@ -20,15 +20,17 @@ type DetoursResponse struct {
 	Detours []Detour `json:"detour"`
 }
 
+type detoursResponseResults struct {
+	Results *DetoursResponse `json:"resultSet,omitempty"`
+}
+
 // Get latest detour information.
 func (s *DetoursService) Get(r *DetoursRequest) (*DetoursResponse, error) {
-	url, err := addParameters("detours", r)
-	if err != nil {
+	response := new(detoursResponseResults)
+	err := s.client.Get("detours", r, response)
+	if nil != err {
 		return nil, err
 	}
 
-	response := new(DetoursResponse)
-	err = s.client.Get(url, response)
-
-	return response, err
+	return response.Results, nil
 }
