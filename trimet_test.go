@@ -69,15 +69,6 @@ func testHeader(t *testing.T, r *http.Request, header string, expect string) {
 	}
 }
 
-func testURLParseError(t *testing.T, err error) {
-	if err == nil {
-		t.Errorf("Expected error to be returned")
-	}
-	if err, ok := err.(*url.Error); !ok || err.Op != "parse" {
-		t.Errorf("Expected URL parse error, got %+v", err)
-	}
-}
-
 func testBody(t *testing.T, r *http.Request, expect string) {
 	b, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -153,7 +144,53 @@ func TestNewRequest(t *testing.T) {
 func TestNewRequest_badURL(t *testing.T) {
 	c := NewClient(testAppID, nil)
 	_, err := c.NewRequest("GET", ":", nil)
-	testURLParseError(t, err)
+	if err == nil {
+		t.Error("Expected error to be returned")
+	}
+	if err, ok := err.(*url.Error); !ok || err.Op != "parse" {
+		t.Errorf("Expected URL parse error, got %+v", err)
+	}
+}
+
+func TestNewRequest_emptyURL(t *testing.T) {
+	c := NewClient(testAppID, nil)
+	_, err := c.NewRequest("GET", "", nil)
+	if err == nil {
+		t.Error("Expected error to be returned")
+	}
+}
+
+func TestNewRequest_badAppID(t *testing.T) {
+	c := NewClient("", nil)
+	_, err := c.NewRequest("GET", "arrivals", nil)
+	if err == nil {
+		t.Error("Expected error to be returned")
+	}
+}
+
+func TestNewRequest_nilParams(t *testing.T) {
+	c := NewClient(testAppID, nil)
+
+	_, err := c.NewRequest("GET", "arrivals", nil)
+	if err != nil {
+		t.Errorf("Unexpected error returned for nil parameters: %v", err)
+	}
+
+	var p *int
+	_, err = c.NewRequest("GET", "arrivals", p)
+	if err != nil {
+		t.Errorf("Unexpected error returned for nil pointer parameters: %v", err)
+	}
+}
+
+func TestNewRequest_badParams(t *testing.T) {
+	c := NewClient(testAppID, nil)
+
+	p := new(int)
+	_, err := c.NewRequest("GET", "arrivals", p)
+	if err == nil {
+		t.Error("Expected error to be returned for non-struct request")
+	}
 }
 
 func TestDo(t *testing.T) {
@@ -178,6 +215,16 @@ func TestDo(t *testing.T) {
 	expect := &foo{"a"}
 	if !reflect.DeepEqual(body, expect) {
 		t.Errorf("Expected response body = %v, found %v", expect, body)
+	}
+}
+
+func TestDo_badRequest(t *testing.T) {
+	req, _ := client.NewRequest("GET", "/", nil)
+	req.URL = nil
+	_, err := client.Do(req, nil)
+
+	if err == nil {
+		t.Error("Expected error to be returned")
 	}
 }
 
@@ -222,5 +269,69 @@ func TestErrorResponse_Error(t *testing.T) {
 	err.Message.Content = "m"
 	if err.Error() == "" {
 		t.Errorf("Expected non-empty ErrorResponse.Error()")
+	}
+}
+
+func TestGet(t *testing.T) {
+	setup()
+	defer teardown()
+
+	type aResponse struct {
+		A string
+	}
+
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if "GET" != r.Method {
+			t.Errorf("Expected request method = GET, found %v", r.Method)
+		}
+		fmt.Fprint(w, `{"A":"a"}`)
+	})
+
+	response := new(aResponse)
+	err := client.Get("/", nil, response)
+	if nil != err {
+		t.Fatalf("Unexpected error returned from Get: %v", err)
+	}
+
+	expect := &aResponse{"a"}
+	if !reflect.DeepEqual(response, expect) {
+		t.Errorf("Expected response body = %v, found %v", expect, response)
+	}
+}
+
+func TestGet_badResponseArg(t *testing.T) {
+	err := client.Get("/", nil, nil)
+	if nil == err {
+		t.Errorf("Expected error to be returned for nil response arg")
+	}
+}
+
+func TestGet_badURL(t *testing.T) {
+	err := client.Get("", nil, nil)
+	if nil == err {
+		t.Fatal("Expected error to be returned for invalid URL")
+	}
+}
+
+func TestGet_badRequestArg(t *testing.T) {
+	req := new(int)
+	res := new(int)
+	err := client.Get("/", req, res)
+	if nil == err {
+		t.Fatal("Expected error to be returned for invalid request")
+	}
+}
+
+func TestGet_httpError(t *testing.T) {
+	setup()
+	defer teardown()
+
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.Error(w, "Bad Request", 400)
+	})
+
+	res := new(int)
+	if err := client.Get("/", nil, res); nil == err {
+		t.Error("Expected HTTP 400 error.")
 	}
 }

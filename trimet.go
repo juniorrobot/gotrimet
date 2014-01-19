@@ -76,6 +76,9 @@ func (c *Client) NewRequest(method, urlStr string, params interface{}) (*http.Re
 	if "" == c.appID {
 		return nil, errors.New("Missing required AppID")
 	}
+	if "" == urlStr {
+		return nil, errors.New("Requested URL must not be empty")
+	}
 
 	req := newRequest(c.appID)
 	queryVals, err := query.Values(req)
@@ -187,6 +190,10 @@ func CheckResponse(r *http.Response) error {
 // The API response is decoded and stored in the value pointed to by v, or
 // returned as an error if an API error has occurred.
 func (c *Client) Get(url string, request interface{}, response interface{}) error {
+	if nil == response {
+		return errors.New("GET expects response data")
+	}
+
 	req, err := c.NewRequest("GET", url, request)
 	if err != nil {
 		return err
