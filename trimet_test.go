@@ -9,7 +9,6 @@ import (
 	"net/http/httptest"
 	"net/url"
 	"reflect"
-	"strings"
 	"testing"
 )
 
@@ -244,13 +243,29 @@ func TestDo_httpError(t *testing.T) {
 	}
 }
 
+func TestDo_trimetError(t *testing.T) {
+	setup()
+	defer teardown()
+
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.Error(w, `{"errorMessage":{"content":"Bad request"}}`, 200)
+	})
+
+	req, _ := client.NewRequest("GET", "/", nil)
+	_, err := client.Do(req, nil)
+
+	if err == nil {
+		t.Error("Expected TriMet error.")
+	}
+}
+
 func TestCheckResponse(t *testing.T) {
 	res := &http.Response{
 		Request:    &http.Request{},
 		StatusCode: http.StatusBadRequest,
-		Body:       ioutil.NopCloser(strings.NewReader(`{"errorMessage":{"content":"m"}}`)),
 	}
-	err := CheckResponse(res).(*ErrorResponse)
+	data := []byte(`{"errorMessage":{"content":"m"}}`)
+	err := CheckResponse(res, data).(*ErrorResponse)
 
 	if err == nil {
 		t.Errorf("Expected error response.")

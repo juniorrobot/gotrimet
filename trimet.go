@@ -3,6 +3,7 @@ package trimet
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -152,15 +153,12 @@ func (c *Client) Do(req *http.Request, v interface{}) (*http.Response, error) {
 	}
 	defer response.Body.Close()
 
-	err = CheckResponse(response)
-	if err != nil {
-		// even though there was an error, we still return the response in case
-		// the caller wants to inspect it further
-		return response, err
-	}
-
-	if v != nil {
-		err = json.NewDecoder(response.Body).Decode(v)
+	data, err := ioutil.ReadAll(response.Body)
+	if nil == err && nil != data {
+		err = CheckResponse(response, data)
+		if nil == err && nil != v {
+			err = json.Unmarshal(data, v)
+		}
 	}
 	return response, err
 }
@@ -172,17 +170,18 @@ func (c *Client) Do(req *http.Request, v interface{}) (*http.Response, error) {
 // range.  API error responses are expected to have either no response body, or
 // a JSON response body that maps to ErrorResponse.  Any other response body
 // will be silently ignored.
-func CheckResponse(r *http.Response) error {
-	if c := r.StatusCode; 200 <= c && c <= 299 {
-		return nil
+func CheckResponse(r *http.Response, data []byte) error {
+	errorResponse := newErrorResponse(r)
+	err := json.Unmarshal(data, errorResponse)
+	if nil == err && "" != errorResponse.Message.Content {
+		return errorResponse
 	}
 
-	errorResponse := newErrorResponse(r)
-	data, err := ioutil.ReadAll(r.Body)
-	if err == nil && data != nil {
-		json.Unmarshal(data, errorResponse)
+	if c := r.StatusCode; c < 200 || c > 299 {
+		return fmt.Errorf("Encountered HTTP error status %v", c)
 	}
-	return errorResponse
+
+	return nil
 }
 
 // Do sends an API request and returns the API response.
