@@ -12,7 +12,7 @@ type DetoursRequest struct {
 
 	// If present results will contain only detours applicable for the route
 	// numbers provided. If ommitted every detour in effect will be returned.
-	Routes []string `url:"routes"`
+	Routes []int `url:"routes,omitempty,comma"`
 }
 
 type DetoursResponse struct {
