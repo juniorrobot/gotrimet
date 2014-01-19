@@ -19,6 +19,12 @@ type Location struct {
 	// The longitude of the stop.
 	Lon float64 `json:"lng"`
 
+	// The stop's sequence number in a Route's Direction.
+	Sequence int `json:"seq"`
+
+	// Whether the stop is considered a time point for a Route's Direction.
+	TimePoint bool `json:"tp"`
+
 	// List of routes that service the stop.
 	Routes []Route `json:"route"`
 }

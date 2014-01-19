@@ -1,0 +1,425 @@
+{
+    "resultSet": {
+        "route": [
+            {
+                "desc": "Portland Streetcar - NS Line",
+                "dir": [
+                    {
+                        "stop": [
+                            {
+                                "desc": "SW Lowell & Bond",
+                                "locid": 12881,
+                                "tp": true,
+                                "seq": 25,
+                                "lng": -122.671376020374,
+                                "lat": 45.4938906298509
+                            },
+                            {
+                                "desc": "SW Bond & Lane",
+                                "locid": 12882,
+                                "tp": false,
+                                "seq": 50,
+                                "lng": -122.670932716808,
+                                "lat": 45.495593953864
+                            },
+                            {
+                                "desc": "OHSU Commons",
+                                "locid": 12883,
+                                "tp": true,
+                                "seq": 100,
+                                "lng": -122.670738623655,
+                                "lat": 45.4989385765801
+                            },
+                            {
+                                "desc": "SW Moody & Meade",
+                                "locid": 13602,
+                                "tp": false,
+                                "seq": 150,
+                                "lng": -122.672742267264,
+                                "lat": 45.5033040096853
+                            },
+                            {
+                                "desc": "SW River Pkwy & Moody",
+                                "locid": 12379,
+                                "tp": true,
+                                "seq": 200,
+                                "lng": -122.674139972701,
+                                "lat": 45.5071394700201
+                            },
+                            {
+                                "desc": "SW Harrison Street",
+                                "locid": 12380,
+                                "tp": false,
+                                "seq": 250,
+                                "lng": -122.676531233424,
+                                "lat": 45.5089495445265
+                            },
+                            {
+                                "desc": "SW 1st & Harrison",
+                                "locid": 12381,
+                                "tp": false,
+                                "seq": 300,
+                                "lng": -122.677878143433,
+                                "lat": 45.5097608385749
+                            },
+                            {
+                                "desc": "SW 3rd & Harrison",
+                                "locid": 12382,
+                                "tp": false,
+                                "seq": 350,
+                                "lng": -122.679813063405,
+                                "lat": 45.5102771993458
+                            },
+                            {
+                                "desc": "PSU Urban Center",
+                                "locid": 10764,
+                                "tp": true,
+                                "seq": 400,
+                                "lng": -122.682078,
+                                "lat": 45.51222
+                            },
+                            {
+                                "desc": "SW Park & Mill",
+                                "locid": 10766,
+                                "tp": false,
+                                "seq": 450,
+                                "lng": -122.684553,
+                                "lat": 45.513054
+                            },
+                            {
+                                "desc": "SW 10th & Clay",
+                                "locid": 10765,
+                                "tp": true,
+                                "seq": 500,
+                                "lng": -122.684978,
+                                "lat": 45.514546
+                            },
+                            {
+                                "desc": "Art Museum",
+                                "locid": 6493,
+                                "tp": false,
+                                "seq": 550,
+                                "lng": -122.68399099998,
+                                "lat": 45.516304999998
+                            },
+                            {
+                                "desc": "Central Library",
+                                "locid": 10767,
+                                "tp": true,
+                                "seq": 600,
+                                "lng": -122.682471,
+                                "lat": 45.519225
+                            },
+                            {
+                                "desc": "SW 10th & Alder",
+                                "locid": 10768,
+                                "tp": false,
+                                "seq": 650,
+                                "lng": -122.681733,
+                                "lat": 45.520573
+                            },
+                            {
+                                "desc": "SW 10th & Stark",
+                                "locid": 10769,
+                                "tp": false,
+                                "seq": 700,
+                                "lng": -122.681090913694,
+                                "lat": 45.5217417342333
+                            },
+                            {
+                                "desc": "NW 10th & Couch",
+                                "locid": 10770,
+                                "tp": false,
+                                "seq": 750,
+                                "lng": -122.681083,
+                                "lat": 45.523593
+                            },
+                            {
+                                "desc": "NW 10th & Everett",
+                                "locid": 10771,
+                                "tp": false,
+                                "seq": 800,
+                                "lng": -122.681113,
+                                "lat": 45.525011
+                            },
+                            {
+                                "desc": "NW 10th & Glisan",
+                                "locid": 10772,
+                                "tp": false,
+                                "seq": 850,
+                                "lng": -122.68118,
+                                "lat": 45.526446
+                            },
+                            {
+                                "desc": "NW 10th & Johnson",
+                                "locid": 10773,
+                                "tp": true,
+                                "seq": 900,
+                                "lng": -122.68125,
+                                "lat": 45.528572
+                            },
+                            {
+                                "desc": "NW 10th & Northrup",
+                                "locid": 13604,
+                                "tp": false,
+                                "seq": 950,
+                                "lng": -122.681365907158,
+                                "lat": 45.5314381810721
+                            },
+                            {
+                                "desc": "NW 12th & Northrup",
+                                "locid": 12796,
+                                "tp": false,
+                                "seq": 1000,
+                                "lng": -122.683319529015,
+                                "lat": 45.5315346845716
+                            },
+                            {
+                                "desc": "NW Northrup & 14th",
+                                "locid": 10775,
+                                "tp": true,
+                                "seq": 1050,
+                                "lng": -122.685356502158,
+                                "lat": 45.5315030383606
+                            },
+                            {
+                                "desc": "NW Northrup & 18th",
+                                "locid": 10776,
+                                "tp": true,
+                                "seq": 1100,
+                                "lng": -122.689416558363,
+                                "lat": 45.5314335086312
+                            },
+                            {
+                                "desc": "NW Northrup & 21st",
+                                "locid": 10777,
+                                "tp": false,
+                                "seq": 1150,
+                                "lng": -122.694455,
+                                "lat": 45.531346
+                            },
+                            {
+                                "desc": "NW Northrup & 22nd",
+                                "locid": 10778,
+                                "tp": false,
+                                "seq": 1200,
+                                "lng": -122.696445,
+                                "lat": 45.531308
+                            },
+                            {
+                                "desc": "NW 23rd & Marshall",
+                                "locid": 8989,
+                                "tp": true,
+                                "seq": 1250,
+                                "lng": -122.698688376761,
+                                "lat": 45.5306116478909
+                            }
+                        ],
+                        "desc": "To NW 23rd and Marshall",
+                        "dir": 0
+                    },
+                    {
+                        "stop": [
+                            {
+                                "desc": "NW 23rd & Marshall",
+                                "locid": 8989,
+                                "tp": true,
+                                "seq": 50,
+                                "lng": -122.698688376761,
+                                "lat": 45.5306116478909
+                            },
+                            {
+                                "desc": "NW Lovejoy & 22nd",
+                                "locid": 3596,
+                                "tp": false,
+                                "seq": 100,
+                                "lng": -122.69688,
+                                "lat": 45.529746
+                            },
+                            {
+                                "desc": "NW Lovejoy & 21st",
+                                "locid": 3595,
+                                "tp": false,
+                                "seq": 150,
+                                "lng": -122.694676019495,
+                                "lat": 45.5298329830986
+                            },
+                            {
+                                "desc": "NW Lovejoy & 18th",
+                                "locid": 10751,
+                                "tp": true,
+                                "seq": 200,
+                                "lng": -122.689587149344,
+                                "lat": 45.5299254165705
+                            },
+                            {
+                                "desc": "NW Lovejoy & 13th",
+                                "locid": 10752,
+                                "tp": true,
+                                "seq": 250,
+                                "lng": -122.684611,
+                                "lat": 45.529997
+                            },
+                            {
+                                "desc": "NW 11th & Johnson",
+                                "locid": 10753,
+                                "tp": true,
+                                "seq": 300,
+                                "lng": -122.682373998868,
+                                "lat": 45.5287417489584
+                            },
+                            {
+                                "desc": "NW 11th & Glisan",
+                                "locid": 10754,
+                                "tp": false,
+                                "seq": 350,
+                                "lng": -122.682297014895,
+                                "lat": 45.5266046660366
+                            },
+                            {
+                                "desc": "NW 11th & Everett",
+                                "locid": 10755,
+                                "tp": false,
+                                "seq": 400,
+                                "lng": -122.682245856996,
+                                "lat": 45.5251787559408
+                            },
+                            {
+                                "desc": "NW 11th & Couch",
+                                "locid": 10756,
+                                "tp": false,
+                                "seq": 450,
+                                "lng": -122.682223,
+                                "lat": 45.523784
+                            },
+                            {
+                                "desc": "SW 11th & Alder",
+                                "locid": 9600,
+                                "tp": true,
+                                "seq": 500,
+                                "lng": -122.68281899998,
+                                "lat": 45.521093999998
+                            },
+                            {
+                                "desc": "SW 11th & Taylor",
+                                "locid": 9633,
+                                "tp": false,
+                                "seq": 550,
+                                "lng": -122.683873318603,
+                                "lat": 45.5190589217565
+                            },
+                            {
+                                "desc": "SW 11th & Jefferson",
+                                "locid": 10759,
+                                "tp": false,
+                                "seq": 600,
+                                "lng": -122.685301013972,
+                                "lat": 45.5164024253733
+                            },
+                            {
+                                "desc": "SW 11th & Clay",
+                                "locid": 10760,
+                                "tp": false,
+                                "seq": 650,
+                                "lng": -122.686081,
+                                "lat": 45.515106
+                            },
+                            {
+                                "desc": "SW Park & Market",
+                                "locid": 11011,
+                                "tp": false,
+                                "seq": 700,
+                                "lng": -122.683913,
+                                "lat": 45.513704
+                            },
+                            {
+                                "desc": "SW 5th & Market",
+                                "locid": 10762,
+                                "tp": false,
+                                "seq": 750,
+                                "lng": -122.681041895921,
+                                "lat": 45.5129219831852
+                            },
+                            {
+                                "desc": "SW 5th & Montgomery",
+                                "locid": 10763,
+                                "tp": true,
+                                "seq": 800,
+                                "lng": -122.681314606923,
+                                "lat": 45.5117080762786
+                            },
+                            {
+                                "desc": "SW 3rd & Harrison",
+                                "locid": 12375,
+                                "tp": false,
+                                "seq": 850,
+                                "lng": -122.679597720418,
+                                "lat": 45.510203002331
+                            },
+                            {
+                                "desc": "SW 1st & Harrison",
+                                "locid": 12376,
+                                "tp": false,
+                                "seq": 900,
+                                "lng": -122.677679169304,
+                                "lat": 45.5096895341786
+                            },
+                            {
+                                "desc": "SW Harrison Street",
+                                "locid": 12377,
+                                "tp": false,
+                                "seq": 950,
+                                "lng": -122.676573625166,
+                                "lat": 45.5087917088502
+                            },
+                            {
+                                "desc": "SW River Pkwy & Moody",
+                                "locid": 12378,
+                                "tp": true,
+                                "seq": 1000,
+                                "lng": -122.673923439765,
+                                "lat": 45.5070639368801
+                            },
+                            {
+                                "desc": "SW Moody & Meade",
+                                "locid": 13601,
+                                "tp": false,
+                                "seq": 1025,
+                                "lng": -122.672759735753,
+                                "lat": 45.5030721811026
+                            },
+                            {
+                                "desc": "SW Moody & Gibbs",
+                                "locid": 12760,
+                                "tp": false,
+                                "seq": 1050,
+                                "lng": -122.671814843588,
+                                "lat": 45.4993370063905
+                            },
+                            {
+                                "desc": "SW Moody & Gaines",
+                                "locid": 12880,
+                                "tp": false,
+                                "seq": 1100,
+                                "lng": -122.671942044256,
+                                "lat": 45.4961824454633
+                            },
+                            {
+                                "desc": "SW Lowell & Bond",
+                                "locid": 12881,
+                                "tp": true,
+                                "seq": 1150,
+                                "lng": -122.671376020374,
+                                "lat": 45.4938906298509
+                            }
+                        ],
+                        "desc": "To South Waterfront",
+                        "dir": 1
+                    }
+                ],
+                "route": 193,
+                "type": "R"
+            }
+        ]
+    }
+}
