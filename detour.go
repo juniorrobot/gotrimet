@@ -4,7 +4,7 @@ package trimet
 // routes at the time the query was made.
 type Detour struct {
 	// A unique identifier of the detour.
-	ID int `json:"id"`
+	ID string `json:"id"`
 
 	// Time the detour begins. This will always be a time in the past.
 	// This field is used internally and may be of little use
