@@ -42,6 +42,15 @@ func teardown() {
 	server.Close()
 }
 
+func newTestTime(t *testing.T, timestamp string) *Time {
+	time, err := ParseTime(timestamp)
+	if nil != err {
+		t.Errorf("Unable to parse timestamp %v: %v", timestamp, err)
+		return nil
+	}
+	return time
+}
+
 func testMethod(t *testing.T, r *http.Request, expect string) {
 	if expect != r.Method {
 		t.Errorf("Expected request method %v, found %v", expect, r.Method)

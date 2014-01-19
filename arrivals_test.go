@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"reflect"
 	"testing"
-	"time"
 )
 
 func TestArrivalsService_Get(t *testing.T) {
@@ -34,13 +33,9 @@ func TestArrivalsService_Get(t *testing.T) {
 		t.Errorf("Arrivals.Get returned error: %v", err)
 	}
 
-	PST, _ := time.LoadLocation("America/Los_Angeles")
-	dt20140112171209 := time.Date(2014, 01, 12, 17, 12, 9, 351000000, PST)
-	dt20140112174600 := time.Date(2014, 01, 12, 17, 46, 0, 0, PST)
-	dt20140112171205 := time.Date(2014, 01, 12, 17, 12, 5, 0, PST)
 	expect := &ArrivalsResponse{
 		Response: Response{
-			QueryTime: &Time{&dt20140112171209},
+			QueryTime: newTestTime(t, "2014-01-12T17:12:09.351-0800"),
 		},
 		Locations: []Location{
 			{
@@ -57,14 +52,14 @@ func TestArrivalsService_Get(t *testing.T) {
 				Status:    "estimated",
 				Location:  8989,
 				Block:     1537,
-				Scheduled: &Time{&dt20140112174600},
+				Scheduled: newTestTime(t, "2014-01-12T17:46:00.000-0800"),
 				ShortSign: "15 Gateway TC",
 				Direction: 1,
-				Estimated: &Time{&dt20140112174600},
+				Estimated: newTestTime(t, "2014-01-12T17:46:00.000-0800"),
 				Route:     15,
 				Departed:  false,
 				BlockPosition: Position{
-					At:      &Time{&dt20140112171205},
+					At:      newTestTime(t, "2014-01-12T17:12:05.000-0800"),
 					Feet:    15005,
 					Lon:     -122.6973469,
 					Lat:     45.5233678,
@@ -96,7 +91,7 @@ func TestArrivalsService_Get(t *testing.T) {
 		},
 	}
 	if !reflect.DeepEqual(arrivals, expect) {
-		t.Errorf("Expected Arrivals.Get to return %+v, found %+v", expect, arrivals)
+		t.Errorf("Expected Arrivals.Get to return:\nt%+v\nfound:\n%+v", expect, arrivals)
 	}
 }
 

@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"reflect"
 	"testing"
-	"time"
 )
 
 func TestDetoursService_Get(t *testing.T) {
@@ -35,21 +34,14 @@ func TestDetoursService_Get(t *testing.T) {
 		t.Fatalf("Detours.Get returned error: %v", err)
 	}
 
-	PST, _ := time.LoadLocation("America/Los_Angeles")
-	dt20131108140700 := time.Date(2013, 11, 8, 14, 7, 0, 0, PST)
-	dt20371109020000 := time.Date(2037, 11, 9, 2, 0, 0, 0, PST)
-	dt20131202030000 := time.Date(2013, 12, 2, 3, 0, 0, 0, PST)
-	dt20371203020000 := time.Date(2037, 12, 3, 2, 0, 0, 0, PST)
-	dt20140113144700 := time.Date(2014, 1, 13, 14, 47, 0, 0, PST)
-	dt20370925020000 := time.Date(2037, 9, 25, 2, 0, 0, 0, PST)
 	expect := &DetoursResponse{
 		Detours: []Detour{
             {
                 ID: "28997",
                 Phonetic: "No service to SW Pacific Highway & 78th due to construction. Use stops before or after.",
                 Description: "No service to SW Pacific Hwy & 78th (Stop ID 4305) due to construction. Use stops before or after.",
-                Begin: &Time{&dt20131108140700},
-                End: &Time{&dt20371109020000},
+                Begin: newTestTime(t, "2013-11-08T14:07:00.000-0800"),
+                End: newTestTime(t, "2037-11-09T02:00:00.000-0800"),
                 Routes: []Route{
                     {
                         Detour: true,
@@ -63,8 +55,8 @@ func TestDetoursService_Get(t *testing.T) {
                 ID: "29416",
                 Phonetic: "For trips to Portland City Center, no service to SW Barbur at Luradel due to construction. Use next stop at Huber St .",
                 Description: "For trips to Portland City Center, no service to SW Barbur at Luradel due to construction. Use next stop at Huber St (Stop ID 150).",
-                Begin: &Time{&dt20131202030000},
-                End: &Time{&dt20371203020000},
+                Begin: newTestTime(t, "2013-12-02T03:00:00.000-0800"),
+                End: newTestTime(t, "2037-12-03T02:00:00.000-0800"),
                 Routes: []Route{
                     {
                         Detour: true,
@@ -78,8 +70,8 @@ func TestDetoursService_Get(t *testing.T) {
                 ID: "29755",
                 Phonetic: "The southbound stop on SW Barbur at Capitol Hill Rd. is closed. Use stop at Evans or a temporary stop at 21st.",
                 Description: "The southbound stop on SW Barbur at Capitol Hill Rd is closed. Use stop at Evans (Stop ID 201) or a temporary stop at 21st.",
-                Begin: &Time{&dt20140113144700},
-                End: &Time{&dt20370925020000},
+                Begin: newTestTime(t, "2014-01-13T14:47:00.000-0800"),
+                End: newTestTime(t, "2037-09-25T02:00:00.000-0700"),
                 Routes: []Route{
                     {
                         Detour: true,

@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"reflect"
 	"testing"
-	"time"
 )
 
 func TestStopsService_Get(t *testing.T) {
@@ -39,10 +38,8 @@ func TestStopsService_Get(t *testing.T) {
 		t.Errorf("Stops.Get returned error: %v", err)
 	}
 
-	PST, _ := time.LoadLocation("America/Los_Angeles")
-	dt20140112153213 := time.Date(2014, 01, 12, 15, 32, 13, 438000000, PST)
 	expect := &StopsResponse{
-		Response: Response{QueryTime: &Time{&dt20140112153213}},
+		Response: Response{QueryTime: newTestTime(t, "2014-01-12T15:32:13.438-0800")},
 		Locations: []Location{
 			{
 				ID:          10775,
