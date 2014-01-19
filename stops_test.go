@@ -90,3 +90,11 @@ func TestStopsService_Get(t *testing.T) {
 		t.Errorf("Expected Stops.Get to return %+v, found %+v", expect, stops)
 	}
 }
+
+func TestStopsService_Get_badRequest(t *testing.T) {
+	var req *StopsRequest
+	_, err := client.Stops.Get(req)
+	if nil == err {
+		t.Error("Expected Stops.Get to return error for nil request")
+	}
+}

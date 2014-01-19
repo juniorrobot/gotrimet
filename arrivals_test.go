@@ -99,3 +99,11 @@ func TestArrivalsService_Get(t *testing.T) {
 		t.Errorf("Expected Arrivals.Get to return %+v, found %+v", expect, arrivals)
 	}
 }
+
+func TestArrivalsService_Get_badRequest(t *testing.T) {
+	var req *ArrivalsRequest
+	_, err := client.Arrivals.Get(req)
+	if nil == err {
+		t.Error("Expected Arrivals.Get to return error for nil request")
+	}
+}

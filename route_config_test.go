@@ -463,3 +463,11 @@ func TestRoutesService_Get(t *testing.T) {
 		t.Errorf("Expected Routes.Get to return:\n%+v\nfound:\n%+v", expect, routes)
 	}
 }
+
+func TestRoutesService_Get_badRequest(t *testing.T) {
+	var req *RouteConfigRequest
+	_, err := client.Routes.Get(req)
+	if nil == err {
+		t.Error("Expected Routes.Get to return error for nil request")
+	}
+}

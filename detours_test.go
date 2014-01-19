@@ -95,3 +95,11 @@ func TestDetoursService_Get(t *testing.T) {
 		t.Errorf("Expected Detours.Get to return:\n%+v\nfound:\n%+v", expect, detours)
 	}
 }
+
+func TestDetoursService_Get_badRequest(t *testing.T) {
+	var req *DetoursRequest
+	_, err := client.Detours.Get(req)
+	if nil == err {
+		t.Error("Expected Detours.Get to return error for nil request")
+	}
+}
