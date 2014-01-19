@@ -1,0 +1,51 @@
+{
+    "resultSet": {
+        "detour": [
+            {
+                "id": "28997",
+                "phonetic": "No service to SW Pacific Highway & 78th due to construction. Use stops before or after.",
+                "desc": "No service to SW Pacific Hwy & 78th (Stop ID 4305) due to construction. Use stops before or after.",
+                "route": [
+                    {
+                        "detour": true,
+                        "desc": "12-Barbur/Sandy Blvd",
+                        "route": 12,
+                        "type": "B"
+                    }
+                ],
+                "end": "2037-11-09T02:00:00.000-0800",
+                "begin": "2013-11-08T14:07:00.000-0800"
+            },
+            {
+                "id": "29416",
+                "phonetic": "For trips to Portland City Center, no service to SW Barbur at Luradel due to construction. Use next stop at Huber St .",
+                "desc": "For trips to Portland City Center, no service to SW Barbur at Luradel due to construction. Use next stop at Huber St (Stop ID 150).",
+                "route": [
+                    {
+                        "detour": true,
+                        "desc": "12-Barbur/Sandy Blvd",
+                        "route": 12,
+                        "type": "B"
+                    }
+                ],
+                "end": "2037-12-03T02:00:00.000-0800",
+                "begin": "2013-12-02T03:00:00.000-0800"
+            },
+            {
+                "id": "29755",
+                "phonetic": "The southbound stop on SW Barbur at Capitol Hill Rd. is closed. Use stop at Evans or a temporary stop at 21st.",
+                "desc": "The southbound stop on SW Barbur at Capitol Hill Rd is closed. Use stop at Evans (Stop ID 201) or a temporary stop at 21st.",
+                "route": [
+                    {
+                        "detour": true,
+                        "desc": "12-Barbur/Sandy Blvd",
+                        "route": 12,
+                        "type": "B"
+                    }
+                ],
+                "end": "2037-09-25T02:00:00.000-0700",
+                "begin": "2014-01-13T14:47:00.000-0800"
+            }
+        ]
+    }
+}

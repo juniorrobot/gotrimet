@@ -25,5 +25,5 @@ type Detour struct {
 	Phonetic string `json:"phonetic"`
 
 	// Occurs for every route the detour is applicable.
-	Route []Route `json:"route"`
+	Routes []Route `json:"route"`
 }
