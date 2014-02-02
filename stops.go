@@ -55,3 +55,12 @@ func (s *StopsService) Get(r *StopsRequest) (*StopsResponse, error) {
 
 	return response.Results, nil
 }
+
+// NewStopsRequestWithCoords creates a new StopsRequest with the given coords.
+// All other fields remain default-initialized.
+func NewStopsRequestWithCoords(lat, lon float64) *StopsRequest {
+	lonLat := [2]float64{lon, lat}
+	return &StopsRequest{
+		LonLat: lonLat[0:2],
+	}
+}

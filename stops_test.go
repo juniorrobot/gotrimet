@@ -95,3 +95,21 @@ func TestStopsService_Get_badRequest(t *testing.T) {
 		t.Error("Expected Stops.Get to return error for nil request")
 	}
 }
+
+func TestNewStopsWithCoords(t *testing.T) {
+	var lat, lon float64 = 45.52414929707939, -122.68547059502453
+	req := NewStopsRequestWithCoords(lat, lon)
+	if nil == req {
+		t.Fatal("Expected request to be created; received nil")
+	}
+
+	if nil == req.LonLat || 0 == len(req.LonLat) {
+		t.Fatal("Unexpected empty lon/lat slice")
+	}
+	if req.LonLat[0] != lon {
+		t.Errorf("Expected Longitude=%v, found %v", lon, req.LonLat[0])
+	}
+	if req.LonLat[1] != lat {
+		t.Errorf("Expected Latitude=%v, found %v", lat, req.LonLat[1])
+	}
+}
