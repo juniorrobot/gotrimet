@@ -64,3 +64,20 @@ func TestUnmarshalTime(t *testing.T) {
 	dt20140119120000 := time.Date(2014, 01, 19, 12, 0, 0, 0, PST)
 	checkParsedTime(t, dt20140119120000, *newTime.Time)
 }
+
+func TestMarshalTime(t *testing.T) {
+	PST, _ := time.LoadLocation("America/Los_Angeles")
+	dt2014011912000010 := time.Date(2014, 01, 19, 12, 0, 0, 10, PST)
+
+	newTime := NewTime(dt2014011912000010)
+	timestamp, err := newTime.MarshalJSON()
+	if nil != err {
+		t.Fatalf("Unexpected error unmarshaling time %v: %v", newTime, err)
+	}
+
+	expected := `"2014-01-19T12:00:00-08:00"`
+	if expected != string(timestamp) {
+		t.Errorf("Expected %v marshaled to: %v\n\tfound: %v",
+			newTime, expected, string(timestamp))
+	}
+}

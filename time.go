@@ -1,6 +1,7 @@
 package trimet
 
 import (
+	"errors"
 	"time"
 )
 
@@ -22,6 +23,17 @@ func (t *Time) UnmarshalJSON(data []byte) error {
 		*t.Time = parsed
 	}
 	return err
+}
+
+// MarshalJSON formats a Time as a JSON string in RFC3339 format.
+func (t *Time) MarshalJSON() ([]byte, error) {
+	if nil != t && nil != t.Time {
+		if y := t.Year(); y < 0 || y >= 10000 {
+			return nil, errors.New("Time.MarshalJSON: year outside of range [0,9999]")
+		}
+		return []byte(t.Time.Format(`"` + time.RFC3339 + `"`)), nil
+	}
+	return nil, nil
 }
 
 // NewTime returns a new Time wrapping the given time.
