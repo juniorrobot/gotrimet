@@ -22,10 +22,10 @@ type StopsRequest struct {
 	LonLat []float64 `url:"ll,omitempty,comma"`
 
 	// Use with LonLat to define search radius in feet.
-	Feet int `url:"feet,omitempty"`
+	Feet Distance `url:"feet,omitempty"`
 
 	// Use with LonLat to define search radius in meters.
-	Meters int `url:"meters,omitempty"`
+	Meters Distance `url:"meters,omitempty"`
 
 	// Whether to include a list of routes that service the stop(s).
 	ShowRoutes bool `url:"showRoutes,omitempty"`

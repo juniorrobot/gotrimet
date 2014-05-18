@@ -1,12 +1,14 @@
 package trimet
 
+type Distance float64
+
 type Position struct {
 	// The time this position was reported.
 	At *Time `json:"at"`
 
 	// Number of feet the vehicle is away from the stop at the time the
 	// position was reported.
-	Feet int `json:"feet"`
+	Feet Distance `json:"feet"`
 
 	// The heading of the vehicle at the time of the position was reported.
 	Heading int `json:"heading"`

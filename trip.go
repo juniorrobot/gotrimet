@@ -10,7 +10,7 @@ type Trip struct {
 	// The number of feet along a trip the vehicle must traverse to arrive at
 	// a requested stop. If the vehicle must traverse the entire trip this
 	// number will always be the entire length of the trip.
-	Distance int `json:"destDist"`
+	Distance Distance `json:"destDist"`
 
 	// The direction of the route of this trip.
 	Direction int `json:"dir"`
