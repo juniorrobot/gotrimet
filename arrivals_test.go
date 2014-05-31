@@ -66,7 +66,7 @@ func TestArrivalsService_Get(t *testing.T) {
 					Heading: 273,
 					Trips: []Trip{
 						{
-							ID:          "4285706",
+							ID:          4285706,
 							Progress:    50383,
 							Description: "Montgomery Park",
 							Pattern:     21,
@@ -75,7 +75,7 @@ func TestArrivalsService_Get(t *testing.T) {
 							Distance:    60942,
 						},
 						{
-							ID:          "4285964",
+							ID:          4285964,
 							Progress:    0,
 							Description: "Gateway Layover",
 							Pattern:     26,

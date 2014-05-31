@@ -31,7 +31,7 @@
 						"pattern":21,
 						"dir":0,
 						"route":15,
-						"tripNum":"4285706",
+						"tripNum":4285706,
 						"destDist":60942
 					},
 					{
@@ -40,7 +40,7 @@
 						"pattern":26,
 						"dir":1,
 						"route":15,
-						"tripNum":"4285964",
+						"tripNum":4285964,
 						"destDist":4447
 					}
 				],

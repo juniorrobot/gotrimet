@@ -2,7 +2,7 @@ package trimet
 
 type Trip struct {
 	// The trip number of this trip.
-	ID string `json:"tripNum"`
+	ID int `json:"tripNum"`
 
 	// The route's direction description of the trip.
 	Description string `json:"desc"`
